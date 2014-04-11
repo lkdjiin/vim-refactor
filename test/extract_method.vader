@@ -45,7 +45,7 @@ Expect():
   end
 
 Given (a method indented in a class):
-  Class HelloWorld
+  class HelloWorld
     def greet
       greeting = "Hello world"
       puts greeting
@@ -61,7 +61,7 @@ Do():
   :ExtractMethod\<Enter>
 
 Expect():
-  Class HelloWorld
+  class HelloWorld
     def greet
       puts greeting
     end
@@ -74,4 +74,42 @@ Expect():
       'bar'
     end
   end
+
+
+Given (a method indented in a clas in a module):
+  module Greeter
+    class HelloWorld
+      def greet
+        greeting = "Hello world"
+        puts greeting
+      end
+
+      def foo
+        'bar'
+      end
+    end
+  end
+
+Do():
+  :4\<Enter>
+  :ExtractMethod\<Enter>
+
+Expect():
+  module Greeter
+    class HelloWorld
+      def greet
+        puts greeting
+      end
+
+      def greeting
+        "Hello world"
+      end
+
+      def foo
+        'bar'
+      end
+    end
+  end
+
+
 
