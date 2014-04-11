@@ -15,24 +15,24 @@ function s:init()
   call s:set_indentation()
 endfunction
 
-function s:do_append()
-  call append('.', s:indentation_string . 'end')
-  call append('.', s:indentation_string . '  ' . s:method_body)
-  call append('.', s:indentation_string . 'def ' . s:method_name)
-  call append('.', '')
-endfunction
-
 function s:delete_line()
   execute "normal! .d"
 endfunction
 
-function s:find_end_of_parent_method()
-  /end
+function s:get_end_of_parent_method_line_number()
+  return search("^" . s:indentation_string . "end")
+endfunction
+
+function s:do_append()
+  let s:line_number = s:get_end_of_parent_method_line_number()
+  call append(s:line_number, s:indentation_string . 'end')
+  call append(s:line_number, s:indentation_string . '  ' . s:method_body)
+  call append(s:line_number, s:indentation_string . 'def ' . s:method_name)
+  call append(s:line_number, '')
 endfunction
 
 function vimrefactor#extract_method()
   call s:init()
   call s:delete_line()
-  call s:find_end_of_parent_method()
   call s:do_append()
 endfunction

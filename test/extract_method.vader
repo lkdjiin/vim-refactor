@@ -112,4 +112,41 @@ Expect():
   end
 
 
+Given (a method indented in a class):
+  class HelloWorld
+    def greet
+      greeting = "Hello world"
+      begin
+        something
+      end
+      puts greeting
+    end
+
+    def foo
+      'bar'
+    end
+  end
+
+Do():
+  :3\<Enter>
+  :ExtractMethod\<Enter>
+
+Expect():
+  class HelloWorld
+    def greet
+      begin
+        something
+      end
+      puts greeting
+    end
+
+    def greeting
+      "Hello world"
+    end
+
+    def foo
+      'bar'
+    end
+  end
+
 
