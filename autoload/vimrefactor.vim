@@ -6,18 +6,23 @@ function s:set_data()
 endfunction
 
 function s:do_append()
-  call append('$', '')
-  call append('$', 'def ' . s:method_name)
-  call append('$', '  ' . s:method_body)
-  call append('$', 'end')
+  call append('.', 'end')
+  call append('.', '  ' . s:method_body)
+  call append('.', 'def ' . s:method_name)
+  call append('.', '')
 endfunction
 
 function s:delete_line()
   execute "normal! .d"
 endfunction
 
+function s:find_end_of_parent_method()
+  /end
+endfunction
+
 function vimrefactor#extract_method()
   call s:set_data()
-  call s:do_append()
   call s:delete_line()
+  call s:find_end_of_parent_method()
+  call s:do_append()
 endfunction
