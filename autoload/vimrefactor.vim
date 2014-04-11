@@ -17,7 +17,7 @@ function s:delete_line()
 endfunction
 
 function s:find_end_of_parent_method()
-  /end
+  execute "normal! /end"
 endfunction
 
 function vimrefactor#extract_method()
