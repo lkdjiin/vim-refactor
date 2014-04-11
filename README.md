@@ -1,6 +1,8 @@
 Vim-refactor
 ===========
 
+Easily extract a local variable assignment into a method in your Ruby code!
+
 Installation
 ------------
 
