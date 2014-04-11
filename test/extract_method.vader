@@ -1,0 +1,18 @@
+Given (a simple method):
+  def greet
+    greeting = "Hello world"
+    puts greeting
+  end
+
+Do():
+  :2\<Enter>
+  :ExtractMethod\<Enter>
+
+Expect():
+  def greet
+    puts greeting
+  end
+
+  def greeting
+    "Hello world"
+  end
