@@ -30,7 +30,7 @@ class HelloWorld
 end
 ```
 
-Position the cursor on `greeting = "Hello #{@name}"` and type `:ExtractMethod`
+Position the cursor on `greeting = "Hello World!"` and type `:ExtractMethod`
 or whatever mapping you like (see next section) and this is what you get:
 
 ``` ruby
@@ -41,7 +41,7 @@ class HelloWorld
   end
 
   def greeting
-    "Hello World"
+    "Hello World!"
   end
 end
 ```
