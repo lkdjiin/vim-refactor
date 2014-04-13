@@ -1,3 +1,8 @@
+function s:init()
+  call s:set_data()
+  call s:set_indentation()
+endfunction
+
 function s:set_data()
   let l:data = split(getline('.'), '=')
   let s:method_name = substitute(l:data[0], '^\s*', '', '')
@@ -10,17 +15,8 @@ function s:set_indentation()
   let s:indentation_string = substitute(s:indentation_string, '  ', '', '')
 endfunction
 
-function s:init()
-  call s:set_data()
-  call s:set_indentation()
-endfunction
-
 function s:delete_line()
   execute "normal! .d"
-endfunction
-
-function s:get_end_of_parent_method_line_number()
-  return search("^" . s:indentation_string . "end")
 endfunction
 
 function s:do_append()
@@ -29,6 +25,10 @@ function s:do_append()
   call append(l:line_number, s:indentation_string . '  ' . s:method_body)
   call append(l:line_number, s:indentation_string . 'def ' . s:method_name)
   call append(l:line_number, '')
+endfunction
+
+function s:get_end_of_parent_method_line_number()
+  return search("^" . s:indentation_string . "end")
 endfunction
 
 function vimrefactor#extract_method()
