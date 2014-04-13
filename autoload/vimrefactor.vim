@@ -16,7 +16,7 @@ function s:set_indentation()
 endfunction
 
 function s:delete_line()
-  execute "normal! .d"
+  execute "normal! dd"
 endfunction
 
 function s:do_append()
