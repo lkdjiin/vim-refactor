@@ -10,9 +10,17 @@ function s:set_data()
   let s:method_body = substitute(l:data[1], '^\s*', '', '')
 endfunction
 
+" What we want here is to set the indentation level of the method to
+" extract.
+" To find out the desired indentation level, we simply have to look at
+" the previous ruby `def` method and take the leading spaces.
+" Note:
+" - We are assuming that one level of indentation is two spaces.
+" - An indentation level is nothing more but a string full of spaces.
 function s:set_indentation()
-  let s:indentation_string = get(split(getline('.'), '\S'), 0)
-  let s:indentation_string = substitute(s:indentation_string, '  ', '', '')
+  let l:line_number_for_def = search('^\s*def', 'bn')
+  let l:line_for_def = getline(l:line_number_for_def)
+  let s:indentation_string = substitute(l:line_for_def, 'def.*$', '', '')
 endfunction
 
 function s:delete_line()

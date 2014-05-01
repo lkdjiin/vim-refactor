@@ -149,4 +149,32 @@ Expect():
     end
   end
 
+# Bug#1
+Given():
+  class Foo
+    def foo(bar)
+      bar.each do |item|
+        name = blablab(item)
+        return true if name
+      end
+      false
+    end
+  end
 
+Do():
+  :4\<Enter>
+  :ExtractMethod\<Enter>
+
+Expect():
+  class Foo
+    def foo(bar)
+      bar.each do |item|
+        return true if name
+      end
+      false
+    end
+
+    def name
+      blablab(item)
+    end
+  end
