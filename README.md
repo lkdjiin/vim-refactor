@@ -6,7 +6,7 @@ Easily extract a local variable assignment into a method in your Ruby code!
 Installation
 ------------
 
-In your .vimrc
+With Vundle:
 
     Bundle 'git@github.com:lkdjiin/vim-refactor.git'
 
@@ -48,9 +48,14 @@ end
 
 ### Recommended Mapping
 
-    <Leader>r
+You should map the `ExtractMethod` function to ease its use. Here is an
+example of such a mapping:
+
+    map <Leader>r :ExtractMethod<Enter>
 
 License
 -------
 
-MIT
+Copyright 2014, Xavier Nayrac and Victor Mours.
+
+Distributed under the [MIT License](http://opensource.org/licenses/MIT).
