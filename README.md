@@ -10,6 +10,12 @@ With Vundle:
 
     Bundle 'git@github.com:lkdjiin/vim-refactor.git'
 
+Dependencies
+------------
+
+As the plugin is written in Ruby, A decent version of Ruby is requiered,
+together with a Vim with Ruby support enabled.
+
 Usage
 -----
 
