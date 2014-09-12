@@ -44,6 +44,38 @@ Expect():
     'bar'
   end
 
+Given (an existing private section):
+  def greet
+    greeting = "Hello world"
+    puts greeting
+  end
+
+  private
+
+  def foo
+    'bar'
+  end
+
+Do():
+  :2\<Enter>
+  :ExtractMethod\<Enter>
+
+Expect():
+  def greet
+    puts greeting
+  end
+
+  private
+
+  def greeting
+    "Hello world"
+  end
+
+  def foo
+    'bar'
+  end
+
+
 Given (a method indented in a class):
   class HelloWorld
     def greet
